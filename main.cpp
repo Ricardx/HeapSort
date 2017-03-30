@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void siftDown( int *a, int k, int N);
+void siftDown(int *a, int k, int N);
 
 void swap(int *m, int *n)
 {
@@ -13,14 +13,16 @@ void swap(int *m, int *n)
     *n = tmp;
 }
 
-void heapsort( int a[], int N){
+void heapsort( int a[], int N)
+{
     /* heapify */
     for (int k = N/2; k >= 0; k--)
     {
         siftDown( a, k, N);
     }
 
-    while (N-1 > 0) {
+    while (N-1 > 0)
+    {
         /* swap the root(maximum value) of the heap
         with the last element of the heap */
         swap(a[N-1], a[0]);
@@ -33,8 +35,10 @@ void heapsort( int a[], int N){
     }
 }
 
-void siftDown( int *a, int k, int N){
-    while ( k*2 + 1 < N ) {
+void siftDown( int *a, int k, int N)
+{
+    while ( k*2 + 1 < N )
+    {
         /* For zero-based arrays, the children are 2*i+1 and 2*i+2 */
         int child = 2*k + 1;
 
@@ -54,26 +58,29 @@ void siftDown( int *a, int k, int N){
             return;
     }
 }
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
     int i;
-        int arrey[] = {19, 17, 16, 12, 9, 15, 1, 2, 11, 7, 3, 10, 14};
-        const size_t sz = sizeof(arrey)/sizeof(arrey[0]);
-        for (i = 0; i < sz; i++)
-        {
-            cout << arrey[i] << " ";
-        }
-        cout << endl;
-        cout << "----------------------------------" << endl;
-        heapsort(arrey, sz);
+    int arrey[] = {19, 17, 16, 12, 9, 15, 1, 2, 11, 7, 3, 10, 14};
+    const size_t sz = sizeof(arrey) / sizeof(arrey[0]);
+    
+    for (i = 0; i < sz; i++)
+    {
+        cout << arrey[i] << " ";
+    }
 
-        for (i = 0; i < sz; i++)
-        {
-            cout << arrey[i] << " ";
-        }
-        cout << endl;
+    cout << endl << "----------------------------------" << endl;
+    
+    heapsort(arrey, sz);
 
+    for (i = 0; i < sz; i++)
+    {
+        cout << arrey[i] << " ";
+    }
+    
+    cout << endl;
 
     return a.exec();
 }
